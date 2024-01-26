@@ -3,7 +3,7 @@ import { loginHandler, signupHandler } from "../../../controllers";
 
 const authRoute: Router = express.Router();
 
-authRoute.use("/signup", signupHandler);
-authRoute.use("/login", loginHandler);
+authRoute.post("/signup", signupHandler);
+authRoute.post("/login", loginHandler);
 
 export default authRoute;

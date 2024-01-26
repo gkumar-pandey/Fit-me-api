@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { HashPassword } from "./type";
+import { CheckPasswordMatch, HashPassword } from "./type";
 
 /**
  * @description hashes a password using bcrypt
@@ -13,6 +13,27 @@ export const hashPassword: HashPassword = async (password) => {
     return hashedPassword;
   } catch (error) {
     console.error("Error hashing password.");
+    throw error;
+  }
+};
+
+/**
+ * @description
+ * @param userPassword
+ * @param storedPassword
+ */
+export const checkPasswordMatch: CheckPasswordMatch = async (
+  userPassword,
+  storedPassword
+) => {
+  try {
+    const isPasswordMatched = await bcrypt.compare(
+      userPassword,
+      storedPassword
+    );
+    return isPasswordMatched;
+  } catch (error) {
+    console.error("Error occur in compare password.");
     throw error;
   }
 };

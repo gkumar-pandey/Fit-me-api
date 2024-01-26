@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 interface IUser {
   username: string;
   email: string;
-  password: string | undefined;
+  password: string;
 }
 
 const userSchema: Schema<IUser> = new mongoose.Schema(
